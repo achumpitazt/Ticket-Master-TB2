@@ -1,3 +1,3 @@
-# Ticket-Master-TB2
+# Ticket-Master
 Tablas / Entidades / Getter &amp; Setters
-Cambiar el nombre a la carpeta a "TICKETMASTER"
+
