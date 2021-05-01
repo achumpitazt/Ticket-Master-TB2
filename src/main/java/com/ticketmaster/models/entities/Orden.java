@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Ordenes")
-@SequenceGenerator(name = "genOrden", initialValue = 1)
+@SequenceGenerator(name = "genOrden", initialValue = 1, allocationSize = 1)
 public class Orden {
 	
 	@Id

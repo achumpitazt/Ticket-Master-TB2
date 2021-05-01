@@ -18,7 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Detalles")
-@SequenceGenerator(name = "genDetalle", initialValue =1)
+@SequenceGenerator(name = "genDetalle", initialValue =1, allocationSize = 1)
 public class Detalle {
 	
 	@Id

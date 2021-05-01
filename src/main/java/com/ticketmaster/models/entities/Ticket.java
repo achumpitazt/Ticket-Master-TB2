@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Tickets")
-@SequenceGenerator(name = "genTicket", initialValue = 1)
+@SequenceGenerator(name = "genTicket", initialValue = 1, allocationSize = 1)
 public class Ticket{
 
     @Id

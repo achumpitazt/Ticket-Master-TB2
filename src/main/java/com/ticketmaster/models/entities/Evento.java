@@ -21,7 +21,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Eventos")
-@SequenceGenerator(name = "genEvento",initialValue = 1)
+@SequenceGenerator(name = "genEvento",initialValue = 1, allocationSize = 1)
 public class Evento {
 	
 	@Id

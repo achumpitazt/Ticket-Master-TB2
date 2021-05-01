@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TiposDeEventos")
-@SequenceGenerator(name = "genTipoDeEvento", initialValue = 1)
+@SequenceGenerator(name = "genTipoDeEvento", initialValue = 1, allocationSize = 1)
 public class TipoDeEvento {
 	
 	@Id

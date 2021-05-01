@@ -5,109 +5,122 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Clientes")
-@SequenceGenerator(name = "genCliente", initialValue = 1)
 public class Cliente {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genCliente")
-	@Column(name = "idCliente", columnDefinition = "NUMERIC(6)")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idCliente")
+	private Integer idCliente;
 	
-	@Column( name = "Nombre", length = 40 )
-	private String nombre;
+	@Column( name = "nombreCliente", length = 40 )
+	private String nombreCliente;
 	
-	@Column( name = "Apellido", length = 40 )
-	private String apellido;
+	@Column( name = "apellidoCliente", length = 40 )
+	private String apellidoCliente;
 	
-	@Column( name = "Email", length = 40 )
-	private String email;
+	@Column( name = "emailCliente", length = 40 )
+	private String emailCliente;
 	
-	@Column( name = "Contrasena", length = 40 )
-	private String contrasena;
+	@Column( name = "contraseñaCliente", length = 40 )
+	private String contraseñaCliente;
 	
-	@Column( name = "Pais", length = 40 )
-	private String pais;
+	@Column( name = "paisCliente", length = 40 )
+	private String paisCliente;
 	
-	@Column( name = "Sexo", length = 40 )
-	private String sexo;
+	@Column( name = "sexoCliente", length = 40 )
+	private String sexoCliente;
 	
 	@OneToMany(mappedBy = "cliente")
 	private List<Comentario>comentarios;
 	
 	@OneToMany(mappedBy = "cliente")
 	private List<Orden> ordenes;
-	
-	
-	// -- Constructor, Getter y Setter 
+
 	public Cliente() {
+		super();
+	}
+	
+	public Cliente(Integer idCliente, String nombreCliente, String apellidoCliente,String emailCliente,String contraseñaCliente, String paisCliente, String sexoCliente) {
+		super();
+		this.idCliente = idCliente;
+		this.nombreCliente = nombreCliente;
+		this.apellidoCliente= apellidoCliente;
+		this.emailCliente = emailCliente;
+		this.contraseñaCliente = contraseñaCliente;
+		this.paisCliente = paisCliente;
+		this.sexoCliente = sexoCliente;
 		comentarios = new ArrayList<Comentario>();
 		ordenes = new ArrayList<Orden>();
 		
+		// TODO Auto-generated constructor stub
+	}
+	
+	//Getter y Setter 
+	
+	public Integer getIdCliente() {
+		return idCliente;
 	}
 
-	public Integer getId() {
-		return id;
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public String getNombreCliente() {
+		return nombreCliente;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public void setNombreCliente(String nombreCliente) {
+		this.nombreCliente = nombreCliente;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public String getApellidoCliente() {
+		return apellidoCliente;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public void setApellidoCliente(String apellidoCliente) {
+		this.apellidoCliente = apellidoCliente;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public String getEmailCliente() {
+		return emailCliente;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public String getContraseñaCliente() {
+		return contraseñaCliente;
 	}
 
-	public String getContrasena() {
-		return contrasena;
+	public void setContraseñaCliente(String contraseñaCliente) {
+		this.contraseñaCliente = contraseñaCliente;
 	}
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public String getPaisCliente() {
+		return paisCliente;
 	}
 
-	public String getPais() {
-		return pais;
+	public void setPaisCliente(String paisCliente) {
+		this.paisCliente = paisCliente;
 	}
 
-	public void setPais(String pais) {
-		this.pais = pais;
+	public String getSexoCliente() {
+		return sexoCliente;
 	}
 
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setSexoCliente(String sexoCliente) {
+		this.sexoCliente = sexoCliente;
 	}
 
 	public List<Comentario> getComentarios() {
@@ -126,4 +139,9 @@ public class Cliente {
 		this.ordenes = ordenes;
 	}
 	
+	
+	
+	
+	
+
 }

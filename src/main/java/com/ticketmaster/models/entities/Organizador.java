@@ -14,8 +14,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Organizador")
-@SequenceGenerator(name = "genOrganizador", initialValue = 1)
+@Table(name="Organizadores")
+@SequenceGenerator(name = "genOrganizador", initialValue = 1, allocationSize = 1)
 public class Organizador {
 	  @Id
 	    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genOrganizador")

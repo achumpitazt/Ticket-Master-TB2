@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name= "Pagos")
-@SequenceGenerator(name = "genPago", initialValue = 1)
+@SequenceGenerator(name = "genPago", initialValue = 1, allocationSize = 1)
 public class Pago {
 	
 	@Id
@@ -32,7 +32,7 @@ public class Pago {
 	@Column(name="titulartarjeta",length = 40)
 	private String titulartarjeta;
 	
-	@Column(name="titulartarjeta",length = 12)
+	@Column(name="numeroDeTarjeta",length = 12)
 	private String numeroDeTarjeta;
 	
 	@Column(name="cv",length = 4)

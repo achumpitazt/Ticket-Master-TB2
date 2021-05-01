@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Comentarios")
-@SequenceGenerator(name = "genComentario", initialValue = 1)
+@SequenceGenerator(name = "genComentario", initialValue = 1, allocationSize = 1)
 public class Comentario {
 	
 	@Id
