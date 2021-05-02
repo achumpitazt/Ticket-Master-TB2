@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Métodos de Pagos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Registro de Método de Pago</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		
+			<h:outputLabel for="nameMetodoPago" value="Método de Pago"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nameMetodoPago"
+				styleClass="form-control"
+				value="#{metodoPagoController.metodopago.nombreMetodoPago}"
+				maxlength="40" required="true" />
+			
+			<h:outputLabel for="descripción" value="Descripción"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="descripción"
+				styleClass="form-control"
+				value="#{metodoPagoController.metodopago.descripcion}"
+				maxlength="40" required="true" />
+
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{metodoPagoController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listMetodoPago?faces-redirect=true" />
+			
+
+			<p:commandButton value="Cancelar"
+				action="listMetodoPago?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+				
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>
