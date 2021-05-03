@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de organizadores:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Centros organizadores</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		<!--  
+			<h:outputLabel for="idOrganizador" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idOrganizador"
+				styleClass="form-control"
+				value="#{organizadorController.organizador.id}" required="false" />
+			
+		-->
+			
+			<h:outputLabel for="nameOrganizador" value="Nombres "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nameOrganizador"
+				styleClass="form-control"
+				value="#{organizadorController.organizador.nombre}"
+				maxlength="30" required="true" />
+			<br />
+			
+			
+			<h:outputLabel for="emailOrganizador" value="Correo "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="emailOrganizador"
+				styleClass="form-control"
+				value="#{organizadorController.organizador.email}"
+				maxlength="30" required="true" />
+			<br />
+			
+			
+			<h:outputLabel for="passwordOrganizador" value="contraseña "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="passwordOrganizador"
+				styleClass="form-control"
+				value="#{organizadorController.organizador.contraseña}"
+				maxlength="30" required="true" />
+			<br />
+
+
+			<h:outputLabel for="descripcionOrganizador" value="descripcion "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="descripcionOrganizador"
+				styleClass="form-control"
+				value="#{organizadorController.organizador.descripcion}"
+				maxlength="60" required="true" />
+			<br />
+
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{organizadorController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listOrganizador?faces-redirect=true" />
+								
+			<p:commandButton value="Cancelar"
+				action="listOrganizador?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

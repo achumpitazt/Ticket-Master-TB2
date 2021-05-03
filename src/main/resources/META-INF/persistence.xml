@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="ticketmasterPU" transaction-type="JTA">
+		<jta-data-source>java:/TicketMasterDS</jta-data-source>
+		<class>com.ticketmaster.models.entities.Cliente</class>
+		<class>com.ticketmaster.models.entities.Comentario</class>
+		<class>com.ticketmaster.models.entities.Detalle</class>
+		<class>com.ticketmaster.models.entities.Evento</class>
+		<class>com.ticketmaster.models.entities.MetodoPago</class>
+		<class>com.ticketmaster.models.entities.Orden</class>
+		<class>com.ticketmaster.models.entities.Organizador</class>
+		<class>com.ticketmaster.models.entities.Pago</class>
+		<class>com.ticketmaster.models.entities.Ticket</class>
+		<class>com.ticketmaster.models.entities.TipoDeEvento</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+			<properties>
+			<property name="javax.persistence.schema-generation.database.action" 
+				value="drop-and-create"/>						
+			</properties>
+	</persistence-unit>
+	
+	
+</persistence>
