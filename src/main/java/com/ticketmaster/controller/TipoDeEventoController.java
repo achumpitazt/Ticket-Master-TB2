@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.ticketmaster.models.entities.TipoDeEvento;
 import com.ticketmaster.service.ITipoDeEventoService;
 
+@Named
+@RequestScoped
 public class TipoDeEventoController {
 	
 	@Inject
@@ -30,7 +34,7 @@ public class TipoDeEventoController {
 	//métodos especializados
 	public String newTipoDeEvento() {
 		this.setTipoDeEvento(new TipoDeEvento());
-		return "tipoDeEvento.xhtml";
+		return "tipodeevento.xhtml";
 	}
 	
 	public void insert() {
