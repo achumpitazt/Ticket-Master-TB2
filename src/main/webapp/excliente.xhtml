@@ -11,12 +11,14 @@
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>.:Registro de Clientes:.</span>
+		<span>Registro de clientes</span>
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
 			
+				
+				
 			
 			<h:outputLabel for="nombreCliente" value="Nombre "
 				styleClass="control-label" />
@@ -51,29 +53,22 @@
 				value="#{clienteController.cliente.contraseñaCliente}"
 				maxlength="40" required="true" />
 			<br />
+			<h:outputLabel for="paisCliente" value="País "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="paisCliente"
+				styleClass="form-control"
+				value="#{clienteController.cliente.paisCliente}"
+				maxlength="40" required="true" />
+			<br />
+			<h:outputLabel for="sexoCliente" value="Sexo"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="sexoCliente"
+				styleClass="form-control"
+				value="#{clienteController.cliente.sexoCliente}"
+				maxlength="40" required="true" />
+			<br />
 			
 			
-
-
-			<p:outputLabel for="cboPais" value="Pais" />
-			<p:selectOneMenu id="cboPais"
-				value="#{clienteController.cliente.pais}"
-				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{clienteController.listaPaises}"
-					var="p" itemLabel="#{p.nombrePais}" itemValue="#{p}" />
-			</p:selectOneMenu>
-			<br/>
-			
-			<p:outputLabel for="cboSexo" value="Sexo" />
-			<p:selectOneMenu id="cboSexo"
-				value="#{clienteController.cliente.sexo}"
-				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{clienteController.listaSexos}"
-					var="s" itemLabel="#{s.nombreSexo}" itemValue="#{s}" />
-			</p:selectOneMenu>
-			<br/>
-			
-
 			<p:commandButton value="Grabar"
 				actionListener="#{clienteController.insert()}"
 				styleClass="btn btn-primary " update="@form"

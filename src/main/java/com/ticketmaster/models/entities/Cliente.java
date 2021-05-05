@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
@@ -19,7 +21,6 @@ public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCliente")
 	private Integer idCliente;
 	
 	@Column( name = "nombreCliente", length = 40 )
@@ -34,11 +35,15 @@ public class Cliente {
 	@Column( name = "contraseñaCliente", length = 40 )
 	private String contraseñaCliente;
 	
-	@Column( name = "paisCliente", length = 40 )
-	private String paisCliente;
+	@ManyToOne
+	@JoinColumn(name= "idPais", nullable = false)
+	private Pais pais;
 	
-	@Column( name = "sexoCliente", length = 40 )
-	private String sexoCliente;
+	@ManyToOne
+	@JoinColumn(name= "idSexo", nullable = false)
+	private Sexo sexo;
+	
+	
 	
 	@OneToMany(mappedBy = "cliente")
 	private List<Comentario>comentarios;
@@ -50,15 +55,15 @@ public class Cliente {
 		super();
 	}
 	
-	public Cliente(Integer idCliente, String nombreCliente, String apellidoCliente,String emailCliente,String contraseñaCliente, String paisCliente, String sexoCliente) {
+	public Cliente(Integer idCliente, String nombreCliente, String apellidoCliente,String emailCliente,String contraseñaCliente, Pais pais, Sexo sexo) {
 		super();
 		this.idCliente = idCliente;
 		this.nombreCliente = nombreCliente;
 		this.apellidoCliente= apellidoCliente;
 		this.emailCliente = emailCliente;
 		this.contraseñaCliente = contraseñaCliente;
-		this.paisCliente = paisCliente;
-		this.sexoCliente = sexoCliente;
+		this.pais = pais;
+		this.sexo = sexo;
 		comentarios = new ArrayList<Comentario>();
 		ordenes = new ArrayList<Orden>();
 		
@@ -67,6 +72,7 @@ public class Cliente {
 	
 	//Getter y Setter 
 	
+
 	public Integer getIdCliente() {
 		return idCliente;
 	}
@@ -107,20 +113,12 @@ public class Cliente {
 		this.contraseñaCliente = contraseñaCliente;
 	}
 
-	public String getPaisCliente() {
-		return paisCliente;
+	public Sexo getSexo() {
+		return sexo;
 	}
 
-	public void setPaisCliente(String paisCliente) {
-		this.paisCliente = paisCliente;
-	}
-
-	public String getSexoCliente() {
-		return sexoCliente;
-	}
-
-	public void setSexoCliente(String sexoCliente) {
-		this.sexoCliente = sexoCliente;
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
 	}
 
 	public List<Comentario> getComentarios() {
@@ -138,6 +136,16 @@ public class Cliente {
 	public void setOrdenes(List<Orden> ordenes) {
 		this.ordenes = ordenes;
 	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+	
+	
 	
 	
 	

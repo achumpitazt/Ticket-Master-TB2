@@ -6,38 +6,43 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TiposDeEventos")
-@SequenceGenerator(name = "genTipoDeEvento", initialValue = 1, allocationSize = 1)
 public class TipoDeEvento {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genTipoDeEvento")
-	@Column (name = "idTipoDeEvento", columnDefinition = "Numeric(6)")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name = "idTipoDeEvento")
+	private Integer idTipoDeEvento;
 	
 	@OneToOne(mappedBy = "tipoDeEvento")
 	private Evento evento;
 	
-	@Column(name = "nombre", length = 40)
-	private String nombre;
+	@Column(name = "nombreTipoDeEvento", length = 40)
+	private String nombreTipoDeEvento;
 	
-	@Column(name = "descripcion", length = 60)
-	private String descripcion;
+	@Column(name = "descripcionTipoDeEvento", length = 60)
+	private String descripcionTipoDeEvento;
 	
 	public TipoDeEvento() {
-		
+		super();
+	}
+	
+	public TipoDeEvento(Integer idTipoDeEvento, String nombreTipoDeEvento, String descripcionTipoDeEvento) {
+		super();
+		this.idTipoDeEvento = idTipoDeEvento;
+		this.nombreTipoDeEvento = nombreTipoDeEvento;
+		this.descripcionTipoDeEvento = descripcionTipoDeEvento;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIdTipoDeEvento() {
+		return idTipoDeEvento;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdTipoDeEvento(Integer idTipoDeEvento) {
+		this.idTipoDeEvento = idTipoDeEvento;
 	}
 
 	public Evento getEvento() {
@@ -48,21 +53,23 @@ public class TipoDeEvento {
 		this.evento = evento;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreTipoDeEvento() {
+		return nombreTipoDeEvento;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreTipoDeEvento(String nombreTipoDeEvento) {
+		this.nombreTipoDeEvento = nombreTipoDeEvento;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescripcionTipoDeEvento() {
+		return descripcionTipoDeEvento;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescripcionTipoDeEvento(String descripcionTipoDeEvento) {
+		this.descripcionTipoDeEvento = descripcionTipoDeEvento;
 	}
+
+	
 	
 	
 

@@ -8,7 +8,7 @@
 
 
 	<ui:define name="title">
-        .:Clientes:.
+        .:Listado de Clientes:.
     </ui:define>
 
 	<ui:define name="titleCont">
@@ -18,6 +18,7 @@
 	<ui:define name="content">
 
 		<h:form>
+		
 			<div class="row"> <div class="col-sm-4"> <div
 				class="form-group"> <h:outputLabel for="name" value="Búsqueda"
 				styleClass="control-label" /> <p:inputText autocomplete="off"
@@ -43,16 +44,20 @@
 				<p:commandButton
 				value="Nuevo" action="#{clienteController.newRegion()}"
 				styleClass="btn btn-danger" ajax="false" /> </div> </div> </div>
-			
 
+			
+			
 			<div class="row"> <div class="col-sm-12"> <div
-				class="form-group table-responsive box-table-class"> <p:dataTable
-				id="lstCliente" var="cli"
-				value="#{clienteController.listaClientes}" paginator="true"
-				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
-				rows="10" styleClass="table table-bordered"
+				class="form-group table-responsive box-table-class"> 
+				
+				<p:dataTable
+				id="lstCliente" var="cli" value="#{clienteController.listaClientes}"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="10,20,30,40,50" rows="10"
+				styleClass="table table-bordered"
 				emptyMessage="No existen registros" rowIndexVar="item"
 				style="margin-bottom:0">
+
 
 				<p:column headerText="Código">
 					<h:outputText value="#{cli.idCliente}" />
@@ -74,21 +79,21 @@
 					<h:outputText value="#{cli.contraseñaCliente}" />
 				</p:column>
 				
-
-				<p:column headerText="Pais" sortBy="#{cli.pais.nombrePais}">
-					<h:outputText value="#{cli.pais.nombrePais}" />
+				<p:column headerText="Pais">
+					<h:outputText value="#{cli.paisCliente}" />
 				</p:column>
 				
-				<p:column headerText="Sexo" sortBy="#{cli.sexo.nombreSexo}">
-					<h:outputText value="#{cli.sexo.nombreSexo}" />
+				<p:column headerText="Sexo">
+					<h:outputText value="#{cli.sexoCliente}" />
 				</p:column>
 				
 				<p:column headerText="Operación" exportable="true">
-					<h:commandLink action="lstCliente" value="Eliminar"
+					<h:commandLink action="lstRegion" value="Eliminar"
 						actionListener="#{clienteController.delet(cli)}" />
 				</p:column>
 
-			</p:dataTable> </div> </div> </div>
+			</p:dataTable> 
+			</div> </div> </div>
 		</h:form>
 	</ui:define>
 
