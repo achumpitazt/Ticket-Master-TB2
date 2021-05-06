@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Pagos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>.:Registro de Pagos:.</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		
+				
+				
+			<h:outputLabel for="titularTarjeta" value="Titular Tarjeta "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="titularTarjeta"
+				styleClass="form-control"
+				value="#{pagoController.pago.titulartarjeta}" maxlength="40" 
+				required="true" />
+							
+			<h:outputLabel for="numeroTarjeta" value="Número de Tarjeta"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="numeroTarjeta"
+				styleClass="form-control"
+				value="#{pagoController.pago.numeroDeTarjeta}" maxlength="12" 
+				required="true" />
+				
+			<h:outputLabel for="cvPago" value="CV"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="cvPago"
+				styleClass="form-control"
+				value="#{pagoController.pago.cv}" maxlength="4" 
+				required="true" />
+							
+            <h:outputLabel for="fechaEmisión" value="Fecha de Emisión" 
+                styleClass="control-label"/>
+            <p:inputText autocomplete="off" id="fechaEmisión"
+				styleClass="form-control"
+				value="#{pagoController.pago.fechaDeEmision}" maxlength="55" 
+				required="true" />
+
+			<h:outputLabel for="precioFinal" value="Precio Final"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="precioFinal"
+				styleClass="form-control"
+				value="#{pagoController.pago.preciofinal}" 
+				required="true" />
+			<br />
+
+
+			<p:outputLabel for="cboMetodoPago" value="Metodo de Pago" />
+			<p:selectOneMenu id="cboMetodoPago"
+				value="#{pagoController.pago.metodoPago}"  
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{pagoController.listaMetodoPago}" 
+					var="r" itemLabel="#{r.nombreMetodoPago}" itemValue="#{r}" />
+			</p:selectOneMenu>
+			
+			<p:outputLabel for="cboCliente" value="Cliente" />
+			<p:selectOneMenu id="cboCliente"
+				value="#{pagoController.pago.cliente}"  
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{pagoController.listaCliente}" 
+					var="s" itemLabel="#{s.nombreCliente}" itemValue="#{s}" />
+			</p:selectOneMenu>
+			<br/>
+
+			<p:commandButton value="Grabar"
+				actionListener="#{pagoController.insert()}" 
+				styleClass="btn btn-primary " update="@form"
+				action="listPago?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listPago?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

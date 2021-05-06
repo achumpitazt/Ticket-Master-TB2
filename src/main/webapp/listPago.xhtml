@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> <ui:composition
+	template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Pagos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Listado de pagos </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<div class="row"> <div class="col-sm-4"> <div
+				class="form-group"> <p:commandButton value="Nuevo"
+				action="#{pagoController.newPago()}"   
+				styleClass="btn btn-danger" ajax="false" /> </div> </div> </div>
+
+			<div class="row"> <div class="col-sm-12"> <div
+				class="form-group table-responsive box-table-class"> <p:dataTable
+				id="lstPago" var="p"
+				value="#{pagoController.listapagos}" paginator="true" 
+				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+				rows="10" styleClass="table table-bordered"
+				emptyMessage="No existen registros" rowIndexVar="item"
+				style="margin-bottom:0">
+
+				<p:column headerText="Id" sortBy="#{p.idPago}">
+					<h:outputText value="#{p.idPago}" />
+				</p:column>
+				
+				<p:column headerText="Cliente" sortBy="#{p.cliente.nombreCliente}">
+					<h:outputText value="#{p.cliente.nombreCliente}" />
+				</p:column>
+				
+				<p:column headerText="Método de Pago" sortBy="#{p.metodoPago.nombreMetodoPago}">
+					<h:outputText value="#{p.metodoPago.nombreMetodoPago}" />
+				</p:column>
+				
+				<p:column headerText="Total" sortBy="#{p.total}">
+					<h:outputText value="#{p.total}" />
+				</p:column>
+
+				<p:column headerText="Titular Tarjeta" sortBy="#{p.titulartarjeta}">
+					<h:outputText value="#{p.titulartarjeta}" />
+				</p:column>
+
+				<p:column headerText="Número Tarjeta" sortBy="#{p.numeroDeTarjeta}">
+					<h:outputText value="#{p.numeroDeTarjeta}" />
+				</p:column>
+				
+				<p:column headerText="CV" sortBy="#{p.cv}">
+					<h:outputText value="#{p.cv}" />
+				</p:column>
+				
+				<p:column headerText="Fecha de Emisión" sortBy="#{p.fechaDeEmision}">
+					<h:outputText value="#{p.fechaDeEmision}" />
+				</p:column>
+				
+				<p:column headerText="Precio Final" sortBy="#{p.preciofinal}">
+					<h:outputText value="#{p.preciofinal}" />
+				</p:column>
+
+
+				<p:column headerText="Operación" exportable="false">
+					<h:commandLink action="lstPago" value="Eliminar"
+						actionListener="#{pagoController.deleted(p)}"></h:commandLink>
+				</p:column>
+
+
+			</p:dataTable> </div> </div> </div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>
