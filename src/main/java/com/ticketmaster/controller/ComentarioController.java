@@ -37,7 +37,9 @@ public class ComentarioController {
 		this.listaComentarios = new ArrayList<Comentario>();
 		this.listaClientes = new ArrayList<Cliente>();
 		this.listaEvento = new ArrayList<Evento>();
-		
+		this.listComentario();
+		this.listCliente();
+		this.listEvento();
 		
 	}
 	

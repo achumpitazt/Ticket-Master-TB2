@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Comentarios:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>.:Registro de Comentarios:.</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			
+			<p:outputLabel for="cboCliente" value="Cliente" />
+			<p:selectOneMenu id="cboCliente"
+				value="#{comentarioController.comentario.cliente}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{comentarioController.listaClientes}"
+					var="c" itemLabel="#{c.nombreCliente}" itemValue="#{c}" />
+			</p:selectOneMenu>
+			<br/>
+			
+			<p:outputLabel for="cboEvento" value="Evento" />
+			<p:selectOneMenu id="cboEvento"
+				value="#{comentarioController.comentario.evento}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{comentarioController.listaEvento}"
+					var="e" itemLabel="#{e.tituloEvento}" itemValue="#{e}" />
+			</p:selectOneMenu>
+			<br/>
+			
+			
+			<h:outputLabel for="contenido" value="Comentario "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="contenido"
+				styleClass="form-control"
+				value="#{comentarioController.comentario.contenido}"
+				maxlength="200" required="true" />
+			<br />
+			
+			
+			<p:commandButton value="Grabar"
+				actionListener="#{comentarioController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listComentario?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listComentario?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

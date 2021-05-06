@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> <ui:composition
+	template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Comentario:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Listado de Comentarios </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			
+				<p:commandButton
+				value="Nuevo" action="#{comentarioController.newComentario()}"
+				styleClass="btn btn-danger" ajax="false" /> 
+			
+
+			<div class="row"> <div class="col-sm-12"> <div
+				class="form-group table-responsive box-table-class"> <p:dataTable
+				id="lstComentario" var="com"
+				value="#{comentarioController.listaComentarios}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+				rows="10" styleClass="table table-bordered"
+				emptyMessage="No existen registros" rowIndexVar="item"
+				style="margin-bottom:0">
+
+				<p:column headerText="Código">
+					<h:outputText value="#{com.idComentario}" />
+				</p:column>
+
+				<p:column headerText="Cliente" sortBy="#{com.cliente.nombreCliente}">
+					<h:outputText value="#{com.cliente.nombreCliente}" />
+				</p:column>
+				
+				<p:column headerText="Evento" sortBy="#{com.evento.tituloEvento}">
+					<h:outputText value="#{com.evento.tituloEvento}" />
+				</p:column>
+				
+				<p:column headerText="Comentario">
+					<h:outputText value="#{com.contenido}" />
+				</p:column>
+				
+									
+				<p:column headerText="Operación" exportable="true">
+					<h:commandLink action="lstComentario" value="Eliminar"
+						actionListener="#{comentarioController.delete(com)}" />
+				</p:column>
+
+			</p:dataTable> </div> </div> </div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>
