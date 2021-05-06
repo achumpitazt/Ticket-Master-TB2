@@ -1,14 +1,14 @@
-package com.ticketmaster.dao;
+package com.ticketmaster.service;
 
 import java.util.List;
 
 import com.ticketmaster.models.entities.Evento;
 
-public interface IEventoDao {
+public interface IEventoService {
 	
-	public void insert(Evento evento);
+	public void insert(Evento eve);
 	
-	public List<Evento>list();
+	List<Evento>list();
 	
 	public void delete(Integer idEvento);
 	

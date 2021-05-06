@@ -8,19 +8,19 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import com.ticketmaster.dao.IEventoDao;
-import com.ticketmaster.models.entities.Evento;
+import com.ticketmaster.dao.IComentarioDao;
+import com.ticketmaster.models.entities.Comentario;
 
-public class EventoDaoImpl implements IEventoDao{
+public class ComentarioDaoImpl implements IComentarioDao{
 
 	@PersistenceContext(unitName="ticketmasterPU")
 	private EntityManager em;
 	
 	@Transactional
 	@Override
-	public void insert(Evento event) {
+	public void insert(Comentario com) {
 		try {
-			em.persist(event);
+			em.persist(com);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -29,11 +29,11 @@ public class EventoDaoImpl implements IEventoDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Evento> list() {
-		List<Evento>lista = new ArrayList<Evento>();
+	public List<Comentario> list() {
+		List<Comentario>lista = new ArrayList<Comentario>();
 		try {
-			Query q = em.createQuery("from Evento e");
-			lista = (List<Evento>)q.getResultList();
+			Query q = em.createQuery("From Comentario c");
+			lista = (List<Comentario>)q.getResultList();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -42,11 +42,11 @@ public class EventoDaoImpl implements IEventoDao{
 
 	@Transactional
 	@Override
-	public void delete(Integer idEvento) {
-		Evento ev = new Evento();
+	public void delete(Integer idComentario) {
+		Comentario co = new Comentario();
 		try {
-			ev = em.getReference(Evento.class, idEvento);
-			em.remove(ev);
+			co = em.getReference(Comentario.class, idComentario);
+			em.remove(co);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

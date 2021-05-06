@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
 @Entity
@@ -14,11 +14,7 @@ public class TipoDeEvento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column (name = "idTipoDeEvento")
 	private Integer idTipoDeEvento;
-	
-	@OneToOne(mappedBy = "tipoDeEvento")
-	private Evento evento;
 	
 	@Column(name = "nombreTipoDeEvento", length = 40)
 	private String nombreTipoDeEvento;
@@ -43,14 +39,6 @@ public class TipoDeEvento {
 
 	public void setIdTipoDeEvento(Integer idTipoDeEvento) {
 		this.idTipoDeEvento = idTipoDeEvento;
-	}
-
-	public Evento getEvento() {
-		return evento;
-	}
-
-	public void setEvento(Evento evento) {
-		this.evento = evento;
 	}
 
 	public String getNombreTipoDeEvento() {
@@ -93,6 +81,10 @@ public class TipoDeEvento {
 			return false;
 		return true;
 	}
+
+	
+	
+
 	
 	
 
