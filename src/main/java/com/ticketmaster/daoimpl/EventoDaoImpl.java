@@ -1,5 +1,6 @@
 package com.ticketmaster.daoimpl;
 
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.util.List;
 
@@ -26,16 +27,17 @@ public class EventoDaoImpl implements IEventoDao {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Evento> list() {
-		//List<Evento>lista = new ArrayList<Evento>();
+		List<Evento>lista = new ArrayList<Evento>();
 		try {
 			Query q = em.createQuery("from Evento r");
-			//lista =(List<Eventos>)q.getResultList();
+			lista =(List<Evento>)q.getResultList();
 		} catch (Exception e) {
 			
 		}
-		return null;
+		return lista;
 	}
 
 	@Override

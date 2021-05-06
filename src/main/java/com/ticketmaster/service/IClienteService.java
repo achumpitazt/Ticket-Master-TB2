@@ -12,5 +12,7 @@ public interface IClienteService {
 	
 	public void delete(Integer idCliente);
 	
+	public List<Cliente> findByName(Cliente cli);
+	
 
 }

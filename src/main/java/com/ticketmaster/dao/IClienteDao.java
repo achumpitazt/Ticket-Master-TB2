@@ -11,5 +11,7 @@ public interface IClienteDao {
 	public List<Cliente>list();
 	
 	public void delete(Integer idCliente);
+	
+	public List<Cliente> findByName(Cliente cli);
 
 }

@@ -10,6 +10,8 @@
 		<class>com.ticketmaster.models.entities.Orden</class>
 		<class>com.ticketmaster.models.entities.Organizador</class>
 		<class>com.ticketmaster.models.entities.Pago</class>
+		<class>com.ticketmaster.models.entities.Pais</class>
+		<class>com.ticketmaster.models.entities.Sexo</class>
 		<class>com.ticketmaster.models.entities.Ticket</class>
 		<class>com.ticketmaster.models.entities.TipoDeEvento</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>

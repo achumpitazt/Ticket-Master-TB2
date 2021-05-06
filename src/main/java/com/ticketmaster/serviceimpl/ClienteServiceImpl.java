@@ -38,6 +38,12 @@ public class ClienteServiceImpl implements IClienteService {
 		cDao.delete(idCliente);
 		
 	}
+
+	@Override
+	public List<Cliente> findByName(Cliente cli) {
+		
+		return cDao.findByName(cli);
+	}
 	
 	
 
