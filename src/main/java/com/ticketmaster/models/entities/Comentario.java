@@ -2,30 +2,28 @@ package com.ticketmaster.models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Comentarios")
-@SequenceGenerator(name = "genComentario", initialValue = 1, allocationSize = 1)
 public class Comentario {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "genComentario")
-	@Column (name = "idComentario", columnDefinition = "NUMERIC(6)")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idComentario;
 	
-	@ManyToOne(fetch = FetchType.LAZY)	
+	@ManyToOne
 	@JoinColumn(name = "idCliente", nullable = true)
 	private Cliente cliente;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idEvento", nullable = true)
 	private Evento evento;
 	
@@ -34,12 +32,29 @@ public class Comentario {
 
 	//-- Constructor, getter and setter
 	public Comentario() {
-		
+		super();
+		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	
+	public Comentario(Integer idComentario, Cliente cliente, Evento evento, String contenido) {
+		super();
+		this.idComentario = idComentario;
+		this.cliente = cliente;
+		this.evento = evento;
+		this.contenido = contenido;
+	}
+
+
+
 
 	public Integer getIdComentario() {
 		return idComentario;
 	}
+
+	
 
 	public void setIdComentario(Integer idComentario) {
 		this.idComentario = idComentario;
