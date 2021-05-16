@@ -1,5 +1,7 @@
 package com.ticketmaster.models.entities;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,50 +11,46 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import java.util.ArrayList;
-import java.util.Date;
+import javax.persistence.Table;
+
+
+
 import java.util.List;
 
 @Entity
 @Table(name = "Eventos")
-@SequenceGenerator(name = "genEvento",initialValue = 1, allocationSize = 1)
 public class Evento {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genEvento")
-	@Column(name = "idEvento", columnDefinition = "NUMERIC(6)")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idEvento")
+	private Integer idEvento;
+	
+	
 	
 	@ManyToOne
-	@JoinColumn(name = "IdOrganizador",nullable = false)
-	private Organizador organizador; //IdOrganizador
+	@JoinColumn(name = "idOrganizador",nullable = false)
+	private Organizador Organizador;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name ="idTipoDeEvento", nullable = false)
-	private TipoDeEvento tipoDeEvento;
+	private TipoDeEvento TipoDeEvento;
 	
-	@Column( name = "titulo", length = 40 )
-	private String titulo;
+	@Column( name = "tituloEvento", length = 40 )
+	private String tituloEvento;
 	
-	@Column(name = "fecha")
-	@Temporal(TemporalType.DATE)
-	private Date fecha;
+	@Column(name = "fechaEvento")
+	private String fechaEvento;
 	
-	@Column( name = "descripcion", length = 60 )
-	private String descripcion;
+	@Column( name = "descripcionEvento", length = 60 )
+	private String descripcionEvento;
 	
-	@Column(name = "hora")
-	@Temporal(TemporalType.TIME)
-	private Date hora;
+	@Column(name = "horaEvento")
+	private String horaEvento;
 	
 	@Column(name = "enlaceEvento", length = 200)
-	private String enlace;
+	private String enlaceEvento;
 	
 	@Column(name = "precioEvento", columnDefinition = "DECIMAL(5,2)")
 	private float precioEvento;
@@ -63,70 +61,102 @@ public class Evento {
 	
 	@OneToMany(mappedBy = "evento",fetch = FetchType.LAZY)
 	private List<Ticket> tickets;
-	
+
 	public Evento() {
-		
-		comentarios = new ArrayList<Comentario>();
-		tickets = new ArrayList<Ticket>();
-				
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
 	
-	// -- Constructor, Getter y Setter 
 
-	public Integer getId() {
-		return id;
+	
+
+
+	public Evento(Integer idEvento, com.ticketmaster.models.entities.Organizador organizador,
+			com.ticketmaster.models.entities.TipoDeEvento tipoDeEvento, String tituloEvento, String fechaEvento,
+			String descripcionEvento, String horaEvento, String enlaceEvento, float precioEvento,
+			List<Comentario> comentarios, List<Ticket> tickets) {
+		super();
+		this.idEvento = idEvento;
+		Organizador = organizador;
+		
+		this.tituloEvento = tituloEvento;
+		this.fechaEvento = fechaEvento;
+		this.descripcionEvento = descripcionEvento;
+		this.horaEvento = horaEvento;
+		this.enlaceEvento = enlaceEvento;
+		this.precioEvento = precioEvento;
+		this.comentarios = comentarios;
+		this.tickets = tickets;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+
+
+
+
+
+	public Integer getIdEvento() {
+		return idEvento;
+	}
+
+	public void setIdEvento(Integer idEvento) {
+		this.idEvento = idEvento;
 	}
 
 	public Organizador getOrganizador() {
-		return organizador;
+		return Organizador;
 	}
 
 	public void setOrganizador(Organizador organizador) {
-		this.organizador = organizador;
+		Organizador = organizador;
 	}
 
 	public TipoDeEvento getTipoDeEvento() {
-		return tipoDeEvento;
+		return TipoDeEvento;
 	}
 
 	public void setTipoDeEvento(TipoDeEvento tipoDeEvento) {
-		this.tipoDeEvento = tipoDeEvento;
+		TipoDeEvento = tipoDeEvento;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getTituloEvento() {
+		return tituloEvento;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTituloEvento(String tituloEvento) {
+		this.tituloEvento = tituloEvento;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public String getFechaEvento() {
+		return fechaEvento;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFechaEvento(String fechaEvento) {
+		this.fechaEvento = fechaEvento;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescripcionEvento() {
+		return descripcionEvento;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescripcionEvento(String descripcionEvento) {
+		this.descripcionEvento = descripcionEvento;
 	}
 
-	public Date getHora() {
-		return hora;
+	public String getHoraEvento() {
+		return horaEvento;
 	}
 
-	public void setHora(Date hora) {
-		this.hora = hora;
+	public void setHoraEvento(String horaEvento) {
+		this.horaEvento = horaEvento;
+	}
+
+	public String getEnlaceEvento() {
+		return enlaceEvento;
+	}
+
+	public void setEnlaceEvento(String enlaceEvento) {
+		this.enlaceEvento = enlaceEvento;
 	}
 
 	public float getPrecioEvento() {
@@ -153,14 +183,47 @@ public class Evento {
 		this.tickets = tickets;
 	}
 
-	public String getEnlace() {
-		return enlace;
+
+
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idEvento == null) ? 0 : idEvento.hashCode());
+		return result;
 	}
 
-	public void setEnlace(String enlace) {
-		this.enlace = enlace;
+
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Evento other = (Evento) obj;
+		if (idEvento == null) {
+			if (other.idEvento != null)
+				return false;
+		} else if (!idEvento.equals(other.idEvento))
+			return false;
+		return true;
 	}
+
 	
+	
+	
+	
+	
+
 	
 	
 	

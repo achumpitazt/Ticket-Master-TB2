@@ -64,6 +64,32 @@ public class MetodoPago {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idMetodoPago == null) ? 0 : idMetodoPago.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MetodoPago other = (MetodoPago) obj;
+		if (idMetodoPago == null) {
+			if (other.idMetodoPago != null)
+				return false;
+		} else if (!idMetodoPago.equals(other.idMetodoPago))
+			return false;
+		return true;
+	}
+	
 	
 	
 }

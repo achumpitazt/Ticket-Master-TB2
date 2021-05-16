@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"> <ui:composition
+	template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Evento:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Listado de Evento </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			
+				<p:commandButton
+				value="Nuevo" action="#{eventoController.newEvento()}"
+				styleClass="btn btn-danger" ajax="false" /> 
+			
+
+			<div class="row"> <div class="col-sm-12"> <div
+				class="form-group table-responsive box-table-class"> <p:dataTable
+				id="lstEvento" var="eve"
+				value="#{eventoController.listaEventos}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+				rows="10" styleClass="table table-bordered"
+				emptyMessage="No existen registros" rowIndexVar="item"
+				style="margin-bottom:0">
+
+				<p:column headerText="Código">
+					<h:outputText value="#{eve.idEvento}" />
+				</p:column>
+
+				<p:column headerText="Organizador" sortBy="#{eve.organizador.nombre}">
+					<h:outputText value="#{eve.organizador.nombre}" />
+				</p:column>
+				
+				<p:column headerText="Tipo de Evento" sortBy="#{eve.tipoDeEvento.nombreTipoDeEvento}">
+					<h:outputText value="#{eve.tipoDeEvento.nombreTipoDeEvento}" />
+				</p:column>
+				
+				<p:column headerText="Titutlo de Evento">
+					<h:outputText value="#{eve.tituloEvento}" />
+				</p:column>
+				
+				<p:column headerText="Fecha de Evento">
+					<h:outputText value="#{eve.fechaEvento}" />
+				</p:column>
+				
+				<p:column headerText="Descripción">
+					<h:outputText value="#{eve.descripcionEvento}" />
+				</p:column>
+				
+				<p:column headerText="Hora de Evento">
+					<h:outputText value="#{eve.horaEvento}" />
+				</p:column>
+				
+				<p:column headerText="Enlace de Evento">
+					<h:outputText value="#{eve.enlaceEvento}" />
+				</p:column>
+				
+				<p:column headerText="Precio de Evento">
+					<h:outputText value="#{eve.precioEvento}" />
+				</p:column>
+
+								
+				<p:column headerText="Operación" exportable="true">
+					<h:commandLink action="lstEvento" value="Eliminar"
+						actionListener="#{eventoController.delet(eve)}" />
+				</p:column>
+
+			</p:dataTable> </div> </div> </div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

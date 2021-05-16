@@ -55,4 +55,20 @@ public class ClienteDaoImpl implements IClienteDao {
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Cliente> findByName(Cliente cli) {
+		List<Cliente> lista = new ArrayList<Cliente>();
+		try {
+			Query q= em.createQuery("from Cliente r where r.nombreCliente like ?1");
+			q.setParameter(1, "%"+cli.getNombreCliente()+"%");
+			lista =(List<Cliente>)q.getResultList();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			
+		}
+		return lista;
+	}
+
 }

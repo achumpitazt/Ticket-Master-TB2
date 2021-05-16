@@ -1,18 +1,19 @@
 package com.ticketmaster.controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.ticketmaster.models.entities.Organizador;
 import com.ticketmaster.service.IOrganizadorService;
 
-
+@Named
+@RequestScoped
 public class OrganizadorController {
-	
 	@Inject
 	private IOrganizadorService oService;
 	// variables
@@ -72,5 +73,4 @@ public class OrganizadorController {
 	public void setListaOrganizadores(List<Organizador> listaOrganizadores) {
 		this.listaOrganizadores = listaOrganizadores;
 	}
-
 }

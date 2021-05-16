@@ -1,6 +1,6 @@
 package com.ticketmaster.models.entities;
 
-import java.util.Date;
+//import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,11 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+//import javax.persistence.Temporal;
+//import javax.persistence.TemporalType;
 
 @Entity
 @Table(name= "Pagos")
@@ -22,12 +22,18 @@ public class Pago {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genPago")
 	@Column(name = "idPago", columnDefinition = "NUMERIC(6)")
-	private Integer id;
+	private Integer idPago; 
 	
-	@OneToOne 
+	@ManyToOne
 	@JoinColumn(name = "idMetodoPago", nullable = false)
 	private MetodoPago metodoPago;
+	//Primero implementar metodo pago
+	@ManyToOne
+	@JoinColumn(name = "idCliente", nullable = false)
+	private Cliente cliente;
 	
+	@Column(name = "total")
+	private float total;
 	
 	@Column(name="titulartarjeta",length = 40)
 	private String titulartarjeta;
@@ -39,25 +45,40 @@ public class Pago {
 	private String cv;
 	
 	@Column(name = "fechaDeEmision")
-	@Temporal(TemporalType.TIME)
-	private Date fechaDeEmision;
+	//@Temporal(TemporalType.TIME)
+	//private Date fechaDeEmision;
+	private String fechaDeEmision;
 	
 	@Column(name = "preciofinal", columnDefinition = "DECIMAL(5,2)")
 	private float preciofinal;
 	
-	@OneToOne(mappedBy = "pago")
-	private Orden orden;
-	
+	//Constructor
+
 	public Pago() {
-		
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getId() {
-		return id;
+	public Pago(Integer idPago, MetodoPago metodoPago, Cliente cliente, float total, String titulartarjeta,
+			String numeroDeTarjeta, String cv, String fechaDeEmision, float preciofinal) {
+		super();
+		this.idPago = idPago;
+		this.metodoPago = metodoPago;
+		this.cliente = cliente;
+		this.total = total;
+		this.titulartarjeta = titulartarjeta;
+		this.numeroDeTarjeta = numeroDeTarjeta;
+		this.cv = cv;
+		this.fechaDeEmision = fechaDeEmision;
+		this.preciofinal = preciofinal;
+	}
+	//Get y Set
+	public Integer getIdPago() {
+		return idPago;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdPago(Integer idPago) {
+		this.idPago = idPago;
 	}
 
 	public MetodoPago getMetodoPago() {
@@ -66,6 +87,22 @@ public class Pago {
 
 	public void setMetodoPago(MetodoPago metodoPago) {
 		this.metodoPago = metodoPago;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
 	}
 
 	public String getTitulartarjeta() {
@@ -92,11 +129,11 @@ public class Pago {
 		this.cv = cv;
 	}
 
-	public Date getFechaDeEmision() {
+	public String getFechaDeEmision() {
 		return fechaDeEmision;
 	}
 
-	public void setFechaDeEmision(Date fechaDeEmision) {
+	public void setFechaDeEmision(String fechaDeEmision) {
 		this.fechaDeEmision = fechaDeEmision;
 	}
 
@@ -107,15 +144,7 @@ public class Pago {
 	public void setPreciofinal(float preciofinal) {
 		this.preciofinal = preciofinal;
 	}
-
-	public Orden getOrden() {
-		return orden;
-	}
-
-	public void setOrden(Orden orden) {
-		this.orden = orden;
-	}
 	
 	
-
+		
 }

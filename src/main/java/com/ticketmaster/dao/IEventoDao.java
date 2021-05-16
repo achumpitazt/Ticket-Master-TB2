@@ -11,5 +11,7 @@ public interface IEventoDao {
 	public List<Evento>list();
 	
 	public void delete(Integer idEvento);
+	
+	
 
 }

@@ -5,64 +5,90 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TiposDeEventos")
-@SequenceGenerator(name = "genTipoDeEvento", initialValue = 1, allocationSize = 1)
 public class TipoDeEvento {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genTipoDeEvento")
-	@Column (name = "idTipoDeEvento", columnDefinition = "Numeric(6)")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idTipoDeEvento;
 	
-	@OneToOne(mappedBy = "tipoDeEvento")
-	private Evento evento;
+	@Column(name = "nombreTipoDeEvento", length = 40)
+	private String nombreTipoDeEvento;
 	
-	@Column(name = "nombre", length = 40)
-	private String nombre;
-	
-	@Column(name = "descripcion", length = 60)
-	private String descripcion;
+	@Column(name = "descripcionTipoDeEvento", length = 60)
+	private String descripcionTipoDeEvento;
 	
 	public TipoDeEvento() {
-		
+		super();
+	}
+	
+	public TipoDeEvento(Integer idTipoDeEvento, String nombreTipoDeEvento, String descripcionTipoDeEvento) {
+		super();
+		this.idTipoDeEvento = idTipoDeEvento;
+		this.nombreTipoDeEvento = nombreTipoDeEvento;
+		this.descripcionTipoDeEvento = descripcionTipoDeEvento;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIdTipoDeEvento() {
+		return idTipoDeEvento;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdTipoDeEvento(Integer idTipoDeEvento) {
+		this.idTipoDeEvento = idTipoDeEvento;
 	}
 
-	public Evento getEvento() {
-		return evento;
+	public String getNombreTipoDeEvento() {
+		return nombreTipoDeEvento;
 	}
 
-	public void setEvento(Evento evento) {
-		this.evento = evento;
+	public void setNombreTipoDeEvento(String nombreTipoDeEvento) {
+		this.nombreTipoDeEvento = nombreTipoDeEvento;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getDescripcionTipoDeEvento() {
+		return descripcionTipoDeEvento;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setDescripcionTipoDeEvento(String descripcionTipoDeEvento) {
+		this.descripcionTipoDeEvento = descripcionTipoDeEvento;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idTipoDeEvento == null) ? 0 : idTipoDeEvento.hashCode());
+		return result;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TipoDeEvento other = (TipoDeEvento) obj;
+		if (idTipoDeEvento == null) {
+			if (other.idTipoDeEvento != null)
+				return false;
+		} else if (!idTipoDeEvento.equals(other.idTipoDeEvento))
+			return false;
+		return true;
 	}
+
+	
+	
+
+	
+	
+
+	
 	
 	
 

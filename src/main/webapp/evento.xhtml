@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Eventos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>.:Registro de Eventos:.</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			
+			<p:outputLabel for="cboOrganizador" value="Organizador" />
+			<p:selectOneMenu id="cboOrganizador"
+				value="#{eventoController.evento.organizador}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{eventoController.listaOrganizadores}"
+					var="o" itemLabel="#{o.nombre}" itemValue="#{o}" />
+			</p:selectOneMenu>
+			<br/>
+			
+			<p:outputLabel for="cboTipoDeEvento" value="Tipo de Evento" />
+			<p:selectOneMenu id="cboTipoDeEvento"
+				value="#{eventoController.evento.tipoDeEvento}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{eventoController.listaTipoDeEventos}"
+					var="t" itemLabel="#{t.nombreTipoDeEvento}" itemValue="#{t}" />
+			</p:selectOneMenu>
+			<br/>
+			
+			
+			<h:outputLabel for="tituloEvento" value="Titulo de Evento "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="tituloEvento"
+				styleClass="form-control"
+				value="#{eventoController.evento.tituloEvento}"
+				maxlength="40" required="true" />
+			<br />
+			
+			<h:outputLabel for="fechaEvento" value="Fecha de Evento "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="fechaEvento"
+				styleClass="form-control"
+				value="#{eventoController.evento.fechaEvento}"
+				maxlength="40" required="true" />
+			<br />
+			
+			<h:outputLabel for="descripcionEvento" value="Descripción de Evento "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="descripcionEvento"
+				styleClass="form-control"
+				value="#{eventoController.evento.descripcionEvento}"
+				maxlength="40" required="true" />
+			<br />
+			
+			<h:outputLabel for="horaEvento" value="Hora de Evento "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="horaEvento"
+				styleClass="form-control"
+				value="#{eventoController.evento.horaEvento}"
+				maxlength="40" required="true" />
+			<br />
+			
+			<h:outputLabel for="enlaceEvento" value="Enlace de Evento "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="enlaceEvento"
+				styleClass="form-control"
+				value="#{eventoController.evento.enlaceEvento}"
+				maxlength="40" required="true" />
+			<br />
+			
+			<h:outputLabel for="precioEvento" value="Precio de Evento "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="precioEvento"
+				styleClass="form-control"
+				value="#{eventoController.evento.precioEvento}"
+				maxlength="40" required="true" />
+			<br />
+			
+			
+			<p:commandButton value="Grabar"
+				actionListener="#{eventoController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listEvento?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listEvento?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

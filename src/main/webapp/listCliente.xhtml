@@ -8,7 +8,7 @@
 
 
 	<ui:define name="title">
-        .:Listado de Clientes:.
+        .:Clientes:.
     </ui:define>
 
 	<ui:define name="titleCont">
@@ -18,26 +18,41 @@
 	<ui:define name="content">
 
 		<h:form>
-
 			<div class="row"> <div class="col-sm-4"> <div
-				class="form-group"> <p:commandButton value="Nuevo" 
-				action="#{clienteController.newRegion()}"
-				styleClass="btn btn-danger" ajax="false" /> </div> </div>
+				class="form-group"> <h:outputLabel for="name" value="Búsqueda"
+				styleClass="control-label" /> <p:inputText autocomplete="off"
+				id="name" styleClass="form-control"
+				value="#{clienteController.cliente.nombreCliente}" maxlength="120" /> </div> </div>
+
+			<div class="col-sm-8 text-right">
+			 <div
+				class="form-group box-main-btn"> <span
+				style="display: block; height: 30px;"></span> 
+				
+				<p:commandButton
+				value="Limpiar" update="lstCliente"
+				actionListener="#{clienteController.clear()}"
+				styleClass="btn btn-default" ajax="false" /> 
 				
 				
-				 </div>
+				<p:commandButton
+				value="Buscar" update="lstCliente"
+				actionListener="#{clienteController.findByName()}"
+				styleClass="btn btn-default btn-border" ajax="true" /> 
+				
+				<p:commandButton
+				value="Nuevo" action="#{clienteController.newRegion()}"
+				styleClass="btn btn-danger" ajax="false" /> </div> </div> </div>
 			
+
 			<div class="row"> <div class="col-sm-12"> <div
-				class="form-group table-responsive box-table-class"> 
-				
-				<p:dataTable
-				id="lstCliente" var="cli" value="#{clienteController.listaClientes}"
-				paginator="true" paginatorPosition="top"
-				rowsPerPageTemplate="10,20,30,40,50" rows="10"
-				styleClass="table table-bordered"
+				class="form-group table-responsive box-table-class"> <p:dataTable
+				id="lstCliente" var="cli"
+				value="#{clienteController.listaClientes}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+				rows="10" styleClass="table table-bordered"
 				emptyMessage="No existen registros" rowIndexVar="item"
 				style="margin-bottom:0">
-
 
 				<p:column headerText="Código">
 					<h:outputText value="#{cli.idCliente}" />
@@ -59,21 +74,21 @@
 					<h:outputText value="#{cli.contraseñaCliente}" />
 				</p:column>
 				
-				<p:column headerText="Pais">
-					<h:outputText value="#{cli.paisCliente}" />
+
+				<p:column headerText="Pais" sortBy="#{cli.pais.nombrePais}">
+					<h:outputText value="#{cli.pais.nombrePais}" />
 				</p:column>
 				
-				<p:column headerText="Sexo">
-					<h:outputText value="#{cli.sexoCliente}" />
+				<p:column headerText="Sexo" sortBy="#{cli.sexo.nombreSexo}">
+					<h:outputText value="#{cli.sexo.nombreSexo}" />
 				</p:column>
 				
 				<p:column headerText="Operación" exportable="true">
-					<h:commandLink action="lstRegion" value="Eliminar"
+					<h:commandLink action="lstCliente" value="Eliminar"
 						actionListener="#{clienteController.delet(cli)}" />
 				</p:column>
 
-			</p:dataTable> 
-			</div> </div> </div>
+			</p:dataTable> </div> </div> </div>
 		</h:form>
 	</ui:define>
 

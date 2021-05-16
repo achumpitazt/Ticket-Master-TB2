@@ -1,4 +1,4 @@
-package com.ticketmaster.serviceimlp;
+package com.ticketmaster.serviceimpl;
 
 import java.util.List;
 
