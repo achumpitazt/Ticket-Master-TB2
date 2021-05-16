@@ -53,4 +53,19 @@ public class SexoDaoImpl implements ISexoDao{
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Sexo> findByName(Sexo sex) {
+		List<Sexo> lista = new ArrayList<Sexo>();
+		try {
+			Query q = em.createQuery("from Sexo s where s.nombreSexo like ?1");
+			q.setParameter(1, "%"+sex.getNombreSexo()+"%");
+			lista =(List<Sexo>)q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al listar por nombre en el Dao");
+		}
+		
+		return lista;
+	}
+
 }

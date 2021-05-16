@@ -11,5 +11,7 @@ public interface IPaisService {
 	List<Pais>list();
 	
 	public void delete(Integer idPais);
+	
+	public List<Pais> findByName(Pais pai);
 
 }

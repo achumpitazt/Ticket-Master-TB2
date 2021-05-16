@@ -11,5 +11,7 @@ public interface IPaisDao {
 	public List<Pais>list();
 	
 	public void delete(int idPais);
+	
+	public List<Pais> findByName(Pais pai);
 
 }

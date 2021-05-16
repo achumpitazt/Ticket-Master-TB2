@@ -32,9 +32,6 @@ public class Pago {
 	@JoinColumn(name = "idCliente", nullable = false)
 	private Cliente cliente;
 	
-	@Column(name = "total")
-	private float total;
-	
 	@Column(name="titulartarjeta",length = 40)
 	private String titulartarjeta;
 	
@@ -44,7 +41,7 @@ public class Pago {
 	@Column(name="cv",length = 4)
 	private String cv;
 	
-	@Column(name = "fechaDeEmision")
+	@Column(name = "fechaDeEmision",length = 8)
 	//@Temporal(TemporalType.TIME)
 	//private Date fechaDeEmision;
 	private String fechaDeEmision;
@@ -65,7 +62,6 @@ public class Pago {
 		this.idPago = idPago;
 		this.metodoPago = metodoPago;
 		this.cliente = cliente;
-		this.total = total;
 		this.titulartarjeta = titulartarjeta;
 		this.numeroDeTarjeta = numeroDeTarjeta;
 		this.cv = cv;
@@ -95,14 +91,6 @@ public class Pago {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	public float getTotal() {
-		return total;
-	}
-
-	public void setTotal(float total) {
-		this.total = total;
 	}
 
 	public String getTitulartarjeta() {

@@ -58,4 +58,18 @@ public class PaisDaoImpl implements IPaisDao{
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pais> findByName(Pais pai) {
+		List<Pais> lista = new ArrayList<Pais>();
+		try {
+			Query q= em.createQuery("from Pais p where p.nombrePais like ?1");
+			q.setParameter(1, "%"+pai.getNombrePais()+"%");
+			lista =(List<Pais>)q.getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return lista;
+	}
+
 }

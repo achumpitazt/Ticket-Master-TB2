@@ -11,5 +11,7 @@ public interface ISexoDao {
 	List<Sexo>list();
 	
 	public void delete(Integer idSexo);
+	
+	public List<Sexo> findByName(Sexo sex);
 
 }

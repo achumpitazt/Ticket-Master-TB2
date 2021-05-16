@@ -63,6 +63,23 @@ public class SexoController {
 			System.out.println("Error al eliminar en el controller");
 		}
 	}
+	public void findByName() {
+		try {
+			if(sexo.getNombreSexo().isEmpty()){
+				this.list();
+			}
+			else {
+				listaSexos = this.sService.findByName(this.getSexo());
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	
+	public void clear() {
+		this.init();
+	}
 	
 
 	//getters and setters

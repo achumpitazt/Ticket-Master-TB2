@@ -35,4 +35,10 @@ public class PaisServicesImpl implements IPaisService{
 		
 	}
 
+	@Override
+	public List<Pais> findByName(Pais pai) {
+		
+		return pDao.findByName(pai);
+	}
+
 }

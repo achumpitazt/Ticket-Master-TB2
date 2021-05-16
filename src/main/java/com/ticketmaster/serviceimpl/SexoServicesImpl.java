@@ -35,4 +35,10 @@ public class SexoServicesImpl implements ISexoService{
 		
 	}
 
+	@Override
+	public List<Sexo> findByName(Sexo sex) {
+		
+		return sDao.findByName(sex);
+	}
+
 }

@@ -11,4 +11,6 @@ public interface ISexoService {
 	List<Sexo>list();
 	
 	public void delete(Integer idSexo);
+	
+	public List<Sexo> findByName(Sexo sex);
 }

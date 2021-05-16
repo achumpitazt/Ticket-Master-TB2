@@ -62,6 +62,23 @@ public class PaisController {
 		}
 	}
 	
+	public void findByName() {
+		try {
+			if(pais.getNombrePais().isEmpty()) {
+				this.list();
+			}
+			else {
+				listaPaises = this.pService.findByName(this.getPais());
+			}
+		} catch (Exception e) {
+			System.out.println("Error al buscar por nombre en el controller");
+		}
+	}
+	
+	public void clear() {
+		this.init();
+	}
+	
 	//getters and setter
 
 	

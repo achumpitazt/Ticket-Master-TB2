@@ -19,8 +19,27 @@
 
 		<h:form>
 		
-			<div class="row"> <div class="col-sm-4"> <div
-				class="form-group"> 
+			 <div class="row"> <div class="col-sm-4"> <div
+				class="form-group"> <h:outputLabel for="name" value="Búsqueda"
+				styleClass="control-label" /> <p:inputText autocomplete="off"
+				id="name" styleClass="form-control"
+				value="#{paisController.pais.nombrePais}" maxlength="120" /> </div> </div>
+
+			<div class="col-sm-8 text-right">
+			 <div
+				class="form-group box-main-btn"> <span
+				style="display: block; height: 30px;"></span> 
+				
+				<p:commandButton
+				value="Limpiar" update="lstPais"
+				actionListener="#{paisController.clear()}"
+				styleClass="btn btn-default" ajax="false" /> 
+				
+				
+				<p:commandButton
+				value="Buscar" update="lstPais"
+				actionListener="#{paisController.findByName()}"
+				styleClass="btn btn-default btn-border" ajax="true" /> 
 				
 				<p:commandButton
 				value="Nuevo" action="#{paisController.newPais()}"
